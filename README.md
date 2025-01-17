@@ -14,27 +14,37 @@
 6. [📋앱 개발 결과](#📋앱-개발-결과)
 
 
+#### source
+> https://github.com/helloNarehase/CoreML_Llama3
+> https://github.com/helloNarehase/CoreLlama-Chat
+
 
 
 ---
 ## 1. 📝개요
-> OpenAI의 **ChatGPT**가 일상에 자리 잡으면서 개인정보 유출 문제가 부각되고 있다. 
-사용자 데이터가 서버로 전송되어 학습 데이터로 활용될 가능성이 이 문제의 핵심이다. 
-이를 해결하기 위해 **On-Device AI** 기술을 기반으로 한 **Local-Llama with iPhone** 솔루션을 제안한다.
+>  - OpenAI의 **ChatGPT**가 일상에 자리 잡으면서 개인정보 유출 문제가 이슈
+> - 사용자 데이터가 서버로 전송되어 학습 데이터로 활용될 가능성이 이 문제의 핵심
+> - 이를 해결하기 위해 **On-Device AI** 기술을 기반으로 한 **Local-Llama with iPhone** 솔루션을 제안
 ---
 ## 📋문제정의
-> 최근 OpenAI의 ChatGPT와 같은 대형 언어 모델(LLM)이 일상생활의 일부로 자리 잡으면서 개인정보 유출 문제가 점차 부각되며, 이러한 문제는 사용자의 대화 기록이 OpenAI 서버로 전송되고, 잠재적으로 학습 데이터로 활용될 가능성에서 기인한다. 
-
-> 이는 민감한 데이터의 외부 유출과 프라이버시 침해 우려를 야기하며, 사용자 신뢰를 약화시키는 요인으로 작용하고 있다.
+> - OpenAI의 ChatGPT와 같은 대형 언어 모델(LLM)이 일상생활의 일부로 자리 잡으면서 개인정보 유출 문제가 점차 이슈화
+> - 이러한 문제는 사용자의 대화 기록이 OpenAI 서버로 전송, 잠재적으로 학습 데이터로 활용될 가능성에서 기인
+> - 민감한 데이터의 외부 유출과 프라이버시 침해 우려를 야기하며, 사용자 신뢰를 약화시키는 요인으로 작용
 ---
 ## 📋문제 해결을 위한 기술 스택
 | ```Python``` | ```pytorch``` | ```CoreML``` | ```Swift``` | ```Figma``` | 
 |--------|---------|--------|-------|-------|
-|![](https://www.python.org/static/img/python-logo.png)|![]()|||
+|![](https://www.python.org/static/img/python-logo.png)|<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/PyTorch_logo_icon.svg/992px-PyTorch_logo_icon.svg.png?20200318225611" width="40%" />|![](https://developer.apple.com/assets/elements/icons/core-ml/core-ml-128x128_2x.png)| <img src="https://developer.apple.com/swift/images/swift-og.png" width="40%" /> |<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/33/Figma-logo.svg/640px-Figma-logo.svg.png" width="40%" />|
 | 딥러닝, 데이터 전처리 등에 사용되는 언어 | 딥러닝 모델을 다루기 위한 프레임워크 | On-Device 모델 변환 프레임 워크 | iOS 환경에서의 사용자 인터페이스(UI) 구현 | 프론트엔드 디자인을 위한 프로그램 | 
 
 ---
 ## 📋모델 처리
+<div style="background-color: white; border-radius: 15px; display: inline-block;">
+    <img src="assets/convert.png" width="100%" height="100%" />
+</div>
+
+<br>
+
 - ```meta llama```모델을 활용
 - 기존 모델 구조 → On-Device 모델로 변환 불가
 	- 변환을 위해 모델 구조 일부 수정 필요
@@ -60,8 +70,9 @@
 - ### 추론 로직 개발 과정
     > - LM에는 Tokenizer가 존재, 기존 swift로 구현된 tokenizer가 없음
     > - 이에 BPE Tokenizer를 Swift로 구현
-
+<div style="background-color: white; border-radius: 15px; padding: 10px; display: inline-block;">
     <img src="assets/code_inf.png" width="80%" height="80%" />
+</div>
 
     1. tokenizer를 통한 encoding 로직 구현
     2. model의 next sentence prediction 로직 구현
